@@ -50,7 +50,7 @@ bool ON_CreateUuid( ON_UUID& new_uuid )
   // See http://www.faqs.org/rfcs/rfc4122.html for uuid details.
 
   ////{
-  ////  // Use this code when testing reqires "repeatable uniqueness".
+  ////  // Use this code when testing requires "repeatable uniqueness".
   ////  // NEVER check in this code.
   ////  static ON_UUID blank = {
   ////    0,                                        // unsigned long  Data1;

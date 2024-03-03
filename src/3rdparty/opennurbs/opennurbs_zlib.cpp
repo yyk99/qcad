@@ -15,6 +15,7 @@
 
 #include "opennurbs.h"
 
+#if 0
 #if defined(ON_DLL_EXPORTS)
 // When compiling a Windows DLL opennurbs, we
 // statically link ./zlib/.../zlib....lib into
@@ -71,7 +72,7 @@
 #endif // if WIN64 else WIN32
 
 #endif // ON_DLL_EXPORTS
-
+#endif
 
 bool ON_BinaryArchive::WriteCompressedBuffer(
         size_t sizeof__inbuffer,  // sizeof uncompressed input data

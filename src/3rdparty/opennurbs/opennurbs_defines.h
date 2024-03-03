@@ -61,6 +61,11 @@
 */
 
 /* export/import */
+
+#if defined(opennurbs_EXPORTS)
+#   define ON_DLL_EXPORTS
+#endif
+
 #if defined(ON_DLL_EXPORTS)
 
 #if !defined(ON_COMPILING_OPENNURBS)

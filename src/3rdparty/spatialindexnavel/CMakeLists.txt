@@ -75,18 +75,6 @@ add_library(spatialindexnavel SHARED
     src/mvrtree/Index.cc
 )
 
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    set_target_properties(spatialindexnavel PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../../release)
-    set_target_properties(spatialindexnavel PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../../../release)
-    set_target_properties(spatialindexnavel PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ../../../release)
-    target_link_libraries(spatialindexnavel PUBLIC -L${CMAKE_CURRENT_SOURCE_DIR}/../../../release)
-else()
-    set_target_properties(spatialindexnavel PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../../debug)
-    set_target_properties(spatialindexnavel PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../../../debug)
-    set_target_properties(spatialindexnavel PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ../../../debug)
-    target_link_libraries(spatialindexnavel PUBLIC -L${CMAKE_CURRENT_SOURCE_DIR}/../../../debug)
-endif()
-
 target_include_directories(spatialindexnavel PUBLIC
     include
 )

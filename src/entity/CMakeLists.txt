@@ -1,22 +1,6 @@
-cmake_minimum_required(VERSION 3.16)
-project(qcadentity VERSION 1.0 LANGUAGES CXX)
-
-include(../../CMakeInclude.txt)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(${QT_VER} REQUIRED COMPONENTS Core Widgets Concurrent Gui Network OpenGL Sql Svg Xml PrintSupport Qml)
-qt_standard_project_setup()
 
 if(WIN32)
     set(RC entity.rc)
-endif()
-
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../release)
-else()
-    link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../debug)
 endif()
 
 add_library(qcadentity SHARED
@@ -96,16 +80,6 @@ target_compile_definitions(qcadentity PRIVATE
     QCADENTITY_LIBRARY
     QCAD_DLL
 )
-
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    set_target_properties(qcadentity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../release)
-    set_target_properties(qcadentity PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../../release)
-    set_target_properties(qcadentity PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ../../release)
-else()
-    set_target_properties(qcadentity PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../debug)
-    set_target_properties(qcadentity PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../../debug)
-    set_target_properties(qcadentity PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ../../debug)
-endif()
 
 target_link_libraries(qcadentity PUBLIC
     Qt::Core
