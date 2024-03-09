@@ -50,6 +50,8 @@ QStringList RPluginLoader::getPluginFiles() {
 
     QDir pluginsDir = QDir(pluginsPath);
 
+    qDebug() << "pluginsDir:" << pluginsDir.absolutePath();
+
     QStringList nameFilter;
 
     nameFilter.append(QString("*.%1").arg(getPluginSuffix()));
@@ -120,7 +122,7 @@ void RPluginLoader::loadPlugins(bool init) {
 
 //    QStringList disabledPluginsList = disabledPlugins.split(',');
 
-    qDebug() << "loading plugins...";
+    qDebug() << "loading plugins..." << getPluginFiles();
     foreach (QString fileName, getPluginFiles()) {
 //        QString fn = QFileInfo(fileName).fileName();
 //        if (disabledPluginsList.contains(fn, Qt::CaseInsensitive)) {

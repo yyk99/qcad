@@ -324,6 +324,9 @@ int main(int argc, char *argv[]) {
 
     // disable Qt library paths to avoid plugins for Qt designer from being found:
     QStringList pluginPaths = RSettings::getPluginPaths();
+
+    qDebug() << "pluginPaths:" << pluginPaths;
+
     if (pluginPaths.isEmpty()) {
         qWarning() << "No plugin paths found";
         return -1;
@@ -376,7 +379,7 @@ int main(int argc, char *argv[]) {
     // these are always stored in "QCAD3.ini/conf":
     RPluginLoader::loadPlugins(true);
 
-    // initialization of entities whos properties may depend on available plugins:
+    // initialization of entities whose properties may depend on available plugins:
     RPolylineEntity::init();
     RHatchEntity::init();
     RDimensionEntity::init();

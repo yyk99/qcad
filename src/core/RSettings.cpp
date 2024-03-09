@@ -352,6 +352,7 @@ bool RSettings::isDeployed() {
  * \return Path where all application resources are stored ('scripts', 'patterns', 'ts', 'doc', 'linetypes', ...)
  */
 QString RSettings::getApplicationPath() {
+    qDebug() << "QApplication::applicationDirPath(): " << QApplication::applicationDirPath();
     QDir ret(QApplication::applicationDirPath());
 
 #ifdef Q_OS_MAC
@@ -368,8 +369,8 @@ QString RSettings::getApplicationPath() {
         }
     }
 #endif
-
-    if (ret.dirName() == "debug" || ret.dirName() == "release") {
+    qDebug() << "ret.dirName(): " << ret.dirName();
+    if (ret.dirName().toLower() == "debug" || ret.dirName().toLower() == "release") {
         ret.cdUp();
     }
 
@@ -384,6 +385,9 @@ QStringList RSettings::getPluginPaths() {
     QStringList ret;
 
     ret << RSettings::getPluginPath();
+    ret << RSettings::getPluginPath() + "/Debug"; // DEBUG
+
+    qDebug() << "ret:" << ret;
 
     QDir dataDir(RSettings::getDataLocation());
     QStringList addOns = dataDir.entryList(QDir::NoDotAndDotDot|QDir::Readable|QDir::Dirs|QDir::Executable, QDir::Name);
