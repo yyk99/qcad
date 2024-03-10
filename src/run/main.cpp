@@ -103,6 +103,7 @@ void catchSigPipe(int /*s*/){
 #endif
 
 int main(int argc, char *argv[]) {
+    DebugBreak();
     qDebug() << "QCAD version " << R_QCAD_VERSION_STRING;
     // For correct Unicode translation, apply the current system locale:
     setlocale(LC_ALL, "");

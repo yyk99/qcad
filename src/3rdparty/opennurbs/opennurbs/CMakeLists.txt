@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.16)
 project(opennurbs VERSION 1.0 LANGUAGES CXX)
 
 IF(WIN32)
-	#SET(RC ../opennurbs.rc)
+    #SET(RC ../opennurbs.rc)
 ENDIF()
 
-add_library(opennurbs SHARED
+add_library(opennurbs STATIC
     ../opennurbs.h
     ../opennurbs_3dm.h
     ../opennurbs_3dm_attributes.cpp ../opennurbs_3dm_attributes.h
@@ -133,11 +133,11 @@ add_library(opennurbs SHARED
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     set_target_properties(opennurbs PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ../../../../release)
     set_target_properties(opennurbs PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../../../release)
-    target_link_libraries(opennurbs PUBLIC -L${CMAKE_CURRENT_SOURCE_DIR}/../../../../release)
+    #target_link_libraries(opennurbs PUBLIC -L${CMAKE_CURRENT_SOURCE_DIR}/../../../../release)
 else()
     set_target_properties(opennurbs PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ../../../../debug)
     set_target_properties(opennurbs PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../../../debug)
-    target_link_libraries(opennurbs PUBLIC -L${CMAKE_CURRENT_SOURCE_DIR}/../../../../debug)
+    #target_link_libraries(opennurbs PUBLIC -L${CMAKE_CURRENT_SOURCE_DIR}/../../../../debug)
 endif()
 
 target_link_libraries(opennurbs PUBLIC
@@ -151,6 +151,7 @@ if(WIN32)
     )
 
     target_link_libraries(opennurbs PUBLIC
+        Rpcrt4
         gdi32
         user32
     )
