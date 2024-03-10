@@ -75,3 +75,5 @@ build
 *_autogen
 .rcc
 qrc_*.cpp
+build*/
+.vs/
